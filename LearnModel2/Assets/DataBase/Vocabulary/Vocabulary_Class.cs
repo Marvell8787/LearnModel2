@@ -6,4 +6,6 @@ class Vocabulary_Class{
     private string E_Name = "";
     private string C_Name = "";
     private string Voice = "";
+    private string PartOfSpeech = "";
+    private string Sentence = "";
 }
