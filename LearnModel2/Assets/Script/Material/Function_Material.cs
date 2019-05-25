@@ -26,8 +26,7 @@ public class Function_Material : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        Vocabulary_Data.Vocabulary_Init();
-        ShowContent(Material_Check.Choose);
+
     }
     public void Back()
     {

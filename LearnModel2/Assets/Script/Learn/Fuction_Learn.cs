@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fuction_Learn : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
     public void GoMaterial()
     {
         Application.LoadLevel("Material");
@@ -18,7 +13,7 @@ public class Fuction_Learn : MonoBehaviour {
     }
     public void BackHome()
     {
-
+        //Application.LoadLevel("Home");
     }
-	
+
 }
