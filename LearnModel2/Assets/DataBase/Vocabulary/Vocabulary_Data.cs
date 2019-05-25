@@ -17,7 +17,6 @@ static class Vocabulary_Data{
         {
             vocabulary_temp[i] = new Vocabulary_Class(Vocabulary_E_Name[i], Vocabulary_C_Name[i], Vocabulary_Voice[i], Vocabulary_PartOfSpeech[i], Vocabulary_Sentence[i]);
         }
-        Debug.Log(vocabulary_temp[5].GetE_Name());
     }
     public static Vocabulary_Class Vocabulary_Get(int n)
     {
