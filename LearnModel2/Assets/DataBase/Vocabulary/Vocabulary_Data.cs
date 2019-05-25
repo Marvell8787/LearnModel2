@@ -13,6 +13,16 @@ static class Vocabulary_Data{
 
     public static void Vocabulary_Init()
     {
+        Vocabulary_Sentence[0] = "The government implemented new policies last year."; //implement
+        Vocabulary_Sentence[1] = "Everyone must wear a helmet when riding a motorcycle."; //helmet
+        Vocabulary_Sentence[2] = "The doctor made an assurance that my mom’s disease will be cured."; //assirance
+        Vocabulary_Sentence[3] = "The lord of the manor must have had many privileges. "; //lord
+        Vocabulary_Sentence[4] = "He contributed many ideas to the renovation plans."; //contirbute
+        Vocabulary_Sentence[5] = "The depth of the sea cannot be measured."; //depth
+        Vocabulary_Sentence[6] = "Anna lived in the lap of luxury."; //luxury
+        Vocabulary_Sentence[7] = "Please give an applause to welcome the philanthropist."; //applause
+        Vocabulary_Sentence[8] = "We will run a marathon next week."; //marathon
+        Vocabulary_Sentence[9] = "We have a lot of electronic devices in the house."; //electronic
         for (int i = 0; i < 10; i++)
         {
             vocabulary_temp[i] = new Vocabulary_Class(Vocabulary_E_Name[i], Vocabulary_C_Name[i], Vocabulary_Voice[i], Vocabulary_PartOfSpeech[i], Vocabulary_Sentence[i]);

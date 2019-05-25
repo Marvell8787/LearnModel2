@@ -16,6 +16,9 @@ public class Canvas_Material : MonoBehaviour {
         Vocabulary_Class vocabulary_temp = new Vocabulary_Class();
         vocabulary_temp = Vocabulary_Data.Vocabulary_Get(n);
 
+        t_temp = GameObject.Find("Text_QuestionNum").GetComponent<Text>();
+        t_temp.text = (n + 1).ToString() + ".";
+
         t_temp = GameObject.Find("Text_E_Name").GetComponent<Text>();
         t_temp.text = vocabulary_temp.GetE_Name();
         t_temp = GameObject.Find("Text_C_Name").GetComponent<Text>();

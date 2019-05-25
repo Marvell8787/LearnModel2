@@ -11,32 +11,97 @@ static class Material_Check
 
 public class Function_Material : MonoBehaviour {
 
-    public AudioSource implement; //implement
-    public AudioSource helmet; //helmet
-    public AudioSource assurance; //assurance
-    public AudioSource lord; //lord
-    public AudioSource contribute; //contribute
-    public AudioSource depth; //depth
-    public AudioSource luxury; //luxury
-    public AudioSource applause; //applause
-    public AudioSource marathon; //marathon
-    public AudioSource electronic; //electronic
-
-
     // Use this for initialization
-    void Start()
-    {
-
-    }
     public void Back()
     {
         Application.LoadLevel("Learn");
     }
+    public void Right()
+    {
+        if (Material_Check.Choose > 8)
+        {
+            Material_Check.Choose = 0;
+        }
+        else
+        {
+            Material_Check.Choose++ ;
+
+        }
+        ShowContent(Material_Check.Choose);
+    }
+    public void Left()
+    {
+        if (Material_Check.Choose < 1)
+        {
+            Material_Check.Choose = 9;
+        }
+        else
+        {
+            Material_Check.Choose--;
+
+        }
+        ShowContent(Material_Check.Choose);
+    }
+    // Button Choose Start 以後要優化
+    public void Button_1()
+    {
+        Material_Check.Choose = 0;
+        ShowContent(Material_Check.Choose);
+    }
+    public void Button_2()
+    {
+        Material_Check.Choose = 1;
+        ShowContent(Material_Check.Choose);
+    }
+    public void Button_3()
+    {
+        Material_Check.Choose = 2;
+        ShowContent(Material_Check.Choose);
+    }
+    public void Button_4()
+    {
+        Material_Check.Choose = 3;
+        ShowContent(Material_Check.Choose);
+    }
+    public void Button_5()
+    {
+        Material_Check.Choose = 4;
+        ShowContent(Material_Check.Choose);
+    }
+    public void Button_6()
+    {
+        Material_Check.Choose = 5;
+        ShowContent(Material_Check.Choose);
+    }
+    public void Button_7()
+    {
+        Material_Check.Choose = 6;
+        ShowContent(Material_Check.Choose);
+    }
+    public void Button_8()
+    {
+        Material_Check.Choose = 7;
+        ShowContent(Material_Check.Choose);
+    }
+    public void Button_9()
+    {
+        Material_Check.Choose = 8;
+        ShowContent(Material_Check.Choose);
+    }
+    public void Button_10()
+    {
+        Material_Check.Choose = 9;
+        ShowContent(Material_Check.Choose);
+    }
+    // Button Choose End
     public void ShowContent(int n)
     {
         Text t_temp;
         Vocabulary_Class vocabulary_temp = new Vocabulary_Class();
         vocabulary_temp = Vocabulary_Data.Vocabulary_Get(n);
+
+        t_temp = GameObject.Find("Text_QuestionNum").GetComponent<Text>();
+        t_temp.text = (n+1).ToString() + "." ;
 
         t_temp = GameObject.Find("Text_E_Name").GetComponent<Text>();
         t_temp.text = vocabulary_temp.GetE_Name();
@@ -49,44 +114,7 @@ public class Function_Material : MonoBehaviour {
         t_temp = GameObject.Find("Text_Sentence").GetComponent<Text>();
         t_temp.text = vocabulary_temp.GetSentence();
     }
-    public void Play()
-    {
-        switch (Material_Check.Choose)
-        {
-            case 0:
-                implement.Play();
-                break;
-            case 1:
-                helmet.Play();
-                break;
-            case 2:
-                assurance.Play();
-                break;
-            case 3:
-                lord.Play();
-                break;
-            case 4:
-                contribute.Play();
-                break;
-            case 6:
-                depth.Play();
-                break;
-            case 7:
-                luxury.Play();
-                break;
-            case 8:
-                applause.Play();
-                break;
-            case 9:
-                marathon.Play();
-                break;
-            case 10:
-                electronic.Play();
-                break;
-            default:
-                break;
-        }
-    }
+
 
 
 }
