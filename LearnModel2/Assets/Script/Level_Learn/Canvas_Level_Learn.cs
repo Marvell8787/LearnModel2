@@ -11,11 +11,12 @@ public class Canvas_Level_Learn : MonoBehaviour {
         Image i_Temp;
         Level_Class[] level_temp = new Level_Class[7];
         Question_Class[] question_temp = new Question_Class[5];
-        int r,r1;
 
         Question_Data.Question_Init();
         Level_Data.Level_Init();
         ClearAllText();
+        Question_Check.Score = 0;
+        Question_Check.Question_Num = 0; //init
 
         for (int i = 0; i < 5; i++)
         {
@@ -36,49 +37,39 @@ public class Canvas_Level_Learn : MonoBehaviour {
 
         switch (Level_Check.choose)
         {
-            case 0: //Level-1
+            case 0: //Level-1 聽力
                 t_temp = GameObject.Find("Text_Question").GetComponent<Text>();
                 t_temp.text = "Please click on the pattern on the left to select the correct answer based on what you hear and from the options below.";
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("Image/Voice", typeof(Sprite)) as Sprite;
-
-                r = Random.Range(0, 3);
-                for(int i = 0; i < 3;i++)
-                {
-                    if(r == i)
-                        Question_Data.ChangeButton_Ans(question_temp[Question_Chcek.Question_Num].GetAnswer_r(), i);
-                    else
-                    {
-                        r1 = Random.Range(0, 10);
-                        while (true)
-                        //{
-                            Question_Data.ChangeButton_Ans(Question_bank.Vocabulary_Ans[r1], i);
-                        //}
-                    }
-                }
-
+                Question_Data.Button_Ans_Set();
                 break;
-            case 1: //Level-2
+            case 1: //Level-2 中文
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("", typeof(Sprite)) as Sprite;
+                Question_Data.Button_Ans_Set();
                 break;
-            case 2: //Level-3
+            case 2: //Level-3 填空
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("", typeof(Sprite)) as Sprite;
+                Question_Data.Button_Ans_Set();
                 break;
             case 3: //Level-4
                 t_temp = GameObject.Find("Text_Question").GetComponent<Text>();
                 t_temp.text = "Please click on the pattern on the left to select the correct answer based on what you hear and from the options below.";
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("Image/Voice", typeof(Sprite)) as Sprite;
+                Question_Data.Button_Ans_Set();
                 break;
             case 4: //Level-5
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("", typeof(Sprite)) as Sprite;
+                Question_Data.Button_Ans_Set();
                 break;
             case 5: //Level-6
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("", typeof(Sprite)) as Sprite;
+                Question_Data.Button_Ans_Set();
                 break;
             case 6: //overall
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
@@ -87,9 +78,8 @@ public class Canvas_Level_Learn : MonoBehaviour {
             default:
                 break;
         }
-        Question_Chcek.Question_Num = 1;
         t_temp = GameObject.Find("Text_QuestionNum").GetComponent<Text>();
-        t_temp.text = Question_Chcek.Question_Num.ToString() + ".";
+        t_temp.text = (Question_Check.Question_Num+1).ToString() + ".";
 
 
     }
@@ -107,5 +97,6 @@ public class Canvas_Level_Learn : MonoBehaviour {
         t_temp = GameObject.Find("Text_Question").GetComponent<Text>();
         t_temp.text = "";
     }
-	
+
+
 }

@@ -25,9 +25,9 @@ public class Audio_Level_Learn : MonoBehaviour {
         for (int i = 0; i < 5; i++) {
             question_temp[i] = Question_Data.Question_Get(i);
         }
-        question_temp[Question_Chcek.Question_Num].GetQuestion();
+        question_temp[Question_Check.Question_Num].GetQuestion();
 
-        switch ( question_temp[Question_Chcek.Question_Num].GetQuestion() ) //等題目出來記得來給
+        switch ( question_temp[Question_Check.Question_Num].GetQuestion() ) //等題目出來記得來給
         {
             case "implement":
                 implement.Play();
