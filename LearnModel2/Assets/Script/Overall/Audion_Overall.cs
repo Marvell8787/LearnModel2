@@ -19,11 +19,11 @@ public class Audion_Overall : MonoBehaviour {
         Question_Class[] question_temp = new Question_Class[10];
         for (int i = 0; i < 10; i++)
         {
-            question_temp[i] = Question_Data.Question_Overall_Get(i);
+            question_temp[i] = Question_Data.Question_Overall_Get_E(i);
         }
         question_temp[Question_Check.Question_Num].GetQuestion();
 
-        switch (question_temp[Question_Check.Question_Num].GetQuestion()) //等題目出來記得來給
+        switch (question_temp[Question_Check.Question_Num].GetQuestion()) 
         {
             case "implement":
                 implement.Play();

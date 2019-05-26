@@ -29,8 +29,6 @@ public class Canvas_Level_Learn : MonoBehaviour {
         t_temp = GameObject.Find("Text_LevelContent").GetComponent<Text>();
         t_temp.text = level_temp[Level_Check.choose].GetTitle();
 
-        
-
         switch (Level_Check.choose)
         {
             case 0: //Level-1 聽力
@@ -74,10 +72,6 @@ public class Canvas_Level_Learn : MonoBehaviour {
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("", typeof(Sprite)) as Sprite;
                 Question_Data.Button_Ans_Set();
-                break;
-            case 6: //overall 拼字
-                i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
-                i_Temp.sprite = Resources.Load("", typeof(Sprite)) as Sprite;
                 break;
             default:
                 break;

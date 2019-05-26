@@ -47,9 +47,7 @@ public class Function_Level_Learn : MonoBehaviour {
         b_temp.interactable = true;
         b_temp = GameObject.Find("Button_Ans-3").GetComponent<Button>();
         b_temp.interactable = true;
-
-
-
+                
         if (Question_Check.Question_Num == 4)
         {
             if (Question_Check.Score > Level_Data.GetHighestScore(Level_Check.choose))
@@ -98,7 +96,6 @@ public class Function_Level_Learn : MonoBehaviour {
                 default:
                     break;
             }
-
         }
     }
     public void CheckAns()

@@ -24,6 +24,7 @@ static class Question_Data{
 
     //Overall
     public static string[] O_Question = new string[10] { "", "", "", "", "", "", "", "", "", "" };
+    public static string[] O_Question_E = new string[10] { "", "", "", "", "", "", "", "", "", "" };
     public static string[] O_Answer_r_Content = new string[10] { "", "", "", "", "", "", "", "", "", "" };
     public static string[] O_Answer_c_Content = new string[10] { "", "", "", "", "", "", "", "", "", "" };
     public static string[] O_FeedBack = new string[10] { "", "", "", "", "", "", "", "", "", "" };
@@ -34,6 +35,7 @@ static class Question_Data{
 
     public static Question_Class[] question_temp = new Question_Class[5];
     public static Question_Class[] question_overall_temp = new Question_Class[10];
+    public static Question_Class[] question_overall_temp_E = new Question_Class[10];
     public static Vocabulary_Class[] vocabulary_temp = new Vocabulary_Class[10];
 
 
@@ -97,15 +99,6 @@ static class Question_Data{
             }
         }
         QaARandomSequence(5);
-
-        /*for(int i = 0; i < 5;i++)
-        {
-            Debug.Log(Question[i] + " ");
-        }
-        for (int i = 0; i < 5; i++)
-        {
-            Debug.Log(Answer_r[i] + " ");
-        }*/  //Check
 
         for(int i = 0; i < 5; i++)
         {
@@ -178,14 +171,17 @@ static class Question_Data{
     {
         for (int i = 0; i < 10; i++)
         {
-            Question[i] = vocabulary_temp[i].GetE_Name();
-            Answer_r_Content[i] = vocabulary_temp[i].GetE_Name();
+            O_Question[i] = vocabulary_temp[i].GetC_Name();
+            O_Question_E[i] = vocabulary_temp[i].GetE_Name();
+            O_Answer_r_Content[i] = vocabulary_temp[i].GetE_Name();
         }
-        QaARandomSequence(10);
+        O_QaARandomSequence(10);
 
         for (int i = 0; i < 10; i++)
         {
-            question_overall_temp[i] = new Question_Class(i + 1, Question[i], "", Answer_r_Content[i], "", "", "");
+            question_overall_temp[i] = new Question_Class(i + 1, O_Question[i], "", O_Answer_r_Content[i], "", "", "");
+            question_overall_temp_E[i] = new Question_Class(i + 1, O_Question_E[i], "", O_Answer_r_Content[i], "", "", "");
+
         }
     }
     public static void Button_Ans_Set()
@@ -240,12 +236,6 @@ static class Question_Data{
     {
         return question_temp[n];
     }
-
-    public static Question_Class Question_Overall_Get(int n)
-    {
-        return question_overall_temp[n];
-    }
-
     public static string GetButton_Ans(int c)
     {
         return Button_Ans[c];
@@ -257,6 +247,7 @@ static class Question_Data{
         t_temp.text = s;
         Button_Ans[c]=s;
     }
+    // Level_Learn
     public static void ChangeAnswer_r(string s, int c)
     {
         question_temp[c].ChangeAnswer_r(s);
@@ -273,6 +264,23 @@ static class Question_Data{
     {
         question_temp[c].ChangeFeedBack(s);
     }
+    //Overall
+    public static Question_Class Question_Overall_Get(int n)
+    {
+        return question_overall_temp[n];
+    }
+    public static Question_Class Question_Overall_Get_E(int n)
+    {
+        return question_overall_temp_E[n];
+    }
+    public static void ChangeAnswer_c_Content_O(string s, int c)
+    {
+        question_overall_temp[c].ChangeAnswer_c_Content(s);
+    }
+    public static void ChangeFeedBack_O(string s, int c)
+    {
+        question_overall_temp[c].ChangeFeedBack(s);
+    }
     //亂數函式
     public static void QaARandomSequence(int total)
     {
@@ -288,6 +296,26 @@ static class Question_Data{
             temp = Answer_r_Content[i];
             Answer_r_Content[i] = Answer_r_Content[r];
             Answer_r_Content[r] = temp;
+        }
+    }
+    public static void O_QaARandomSequence(int total)
+    {
+        int r;
+        for (int i = 0; i < total; i++)
+        {
+            r = Random.Range(0, total);
+            string temp = "";
+            temp = O_Question[i];
+            O_Question[i] = O_Question[r];
+            O_Question[r] = temp;
+
+            temp = O_Answer_r_Content[i];
+            O_Answer_r_Content[i] = O_Answer_r_Content[r];
+            O_Answer_r_Content[r] = temp;
+
+            temp = O_Question_E[i];
+            O_Question_E[i] = O_Question_E[r];
+            O_Question_E[r] = temp;
         }
     }
     public static int[] GetRandomSequence(int total)

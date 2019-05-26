@@ -27,7 +27,7 @@ public class Audio_Level_Learn : MonoBehaviour {
         }
         question_temp[Question_Check.Question_Num].GetQuestion();
 
-        switch ( question_temp[Question_Check.Question_Num].GetQuestion() ) //等題目出來記得來給
+        switch ( question_temp[Question_Check.Question_Num].GetQuestion() ) 
         {
             case "implement":
                 implement.Play();
