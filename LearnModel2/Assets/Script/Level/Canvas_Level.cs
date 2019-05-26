@@ -10,7 +10,6 @@ public class Canvas_Level : MonoBehaviour {
         Button b_temp;
         int Avg = new int();
         Avg = 0;
-        Level_Data.Level_Init();
         ClearAllText();
         b_temp = GameObject.Find("Button_Challenge").GetComponent<Button>();
         b_temp.interactable = false;

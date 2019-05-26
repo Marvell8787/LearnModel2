@@ -43,4 +43,8 @@ class Level_Class{
     {
         return HighestScore;
     }
+    public void ChangeHighestScore(string s)
+    {
+        HighestScore=s;
+    }
 }

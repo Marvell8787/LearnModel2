@@ -10,18 +10,14 @@ public class Canvas_Level_Learn : MonoBehaviour {
         Text t_temp;
         Image i_Temp;
         Level_Class[] level_temp = new Level_Class[7];
-        Question_Class[] question_temp = new Question_Class[5];
+        Question_Class question_temp = new Question_Class();
 
         Question_Data.Question_Init();
-        Level_Data.Level_Init();
         ClearAllText();
         Question_Check.Score = 0;
         Question_Check.Question_Num = 0; //init
 
-        for (int i = 0; i < 5; i++)
-        {
-            question_temp[i] = Question_Data.Question_Get(i);
-        }
+        question_temp = Question_Data.Question_Get(0);
 
         for (int i = 0; i < 7; i++)
         {
@@ -45,6 +41,8 @@ public class Canvas_Level_Learn : MonoBehaviour {
                 Question_Data.Button_Ans_Set();
                 break;
             case 1: //Level-2 中文
+                t_temp = GameObject.Find("Text_Question").GetComponent<Text>();
+                t_temp.text = question_temp.GetQuestion();
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("", typeof(Sprite)) as Sprite;
                 Question_Data.Button_Ans_Set();
@@ -54,24 +52,26 @@ public class Canvas_Level_Learn : MonoBehaviour {
                 i_Temp.sprite = Resources.Load("", typeof(Sprite)) as Sprite;
                 Question_Data.Button_Ans_Set();
                 break;
-            case 3: //Level-4
+            case 3: //Level-4 聽力
                 t_temp = GameObject.Find("Text_Question").GetComponent<Text>();
                 t_temp.text = "Please click on the pattern on the left to select the correct answer based on what you hear and from the options below.";
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("Image/Voice", typeof(Sprite)) as Sprite;
                 Question_Data.Button_Ans_Set();
                 break;
-            case 4: //Level-5
+            case 4: //Level-5 中文
+                t_temp = GameObject.Find("Text_Question").GetComponent<Text>();
+                t_temp.text = question_temp.GetQuestion();
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("", typeof(Sprite)) as Sprite;
                 Question_Data.Button_Ans_Set();
                 break;
-            case 5: //Level-6
+            case 5: //Level-6 填空
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("", typeof(Sprite)) as Sprite;
                 Question_Data.Button_Ans_Set();
                 break;
-            case 6: //overall
+            case 6: //overall 拼字
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("", typeof(Sprite)) as Sprite;
                 break;
@@ -95,6 +95,8 @@ public class Canvas_Level_Learn : MonoBehaviour {
         t_temp = GameObject.Find("Text_FeedBack").GetComponent<Text>();
         t_temp.text = "";
         t_temp = GameObject.Find("Text_Question").GetComponent<Text>();
+        t_temp.text = "";
+        t_temp = GameObject.Find("Text_ENDContent").GetComponent<Text>();
         t_temp.text = "";
     }
 

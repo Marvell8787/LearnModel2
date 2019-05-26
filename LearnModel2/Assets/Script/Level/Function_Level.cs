@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-static class Level_Check
-{
-    public static string s = "";
-    public static int choose = 0;
-}
-
 public class Function_Level : MonoBehaviour {
     //Button
     public void Back()

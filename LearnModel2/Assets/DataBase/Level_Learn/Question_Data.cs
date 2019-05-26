@@ -39,7 +39,7 @@ static class Question_Data{
         {
             vocabulary_temp[i] = Vocabulary_Data.Vocabulary_Get(i);
         }
-        //要弄中文的題庫
+        //要弄填空的題庫
         switch (Level_Check.choose)
         {
             case 0: //Level-1 
@@ -71,12 +71,19 @@ static class Question_Data{
             if (n1 < 5)
             {
                 Question[i] = vocabulary_temp[i].GetE_Name();
-                Answer_r_Content[i] = vocabulary_temp[i].GetE_Name();
+                if(Level_Check.choose !=1)
+                    Answer_r_Content[i] = vocabulary_temp[i].GetE_Name();
+                else
+                    Answer_r_Content[i] = vocabulary_temp[i].GetC_Name();
+
             }
-            else
+            else if(n1 > 4)
             {
                 Question[i-5] = vocabulary_temp[i].GetE_Name();
-                Answer_r_Content[i-5] = vocabulary_temp[i].GetE_Name();
+                if (Level_Check.choose != 4)
+                    Answer_r_Content[i-5] = vocabulary_temp[i].GetE_Name();
+                else
+                    Answer_r_Content[i-5] = vocabulary_temp[i].GetC_Name();
             }
         }
         QaARandomSequence(5);
@@ -103,6 +110,7 @@ static class Question_Data{
         //亂數陣列 START
         int[] rand = new int[10];
         int c = 0;
+        rand = GetRandomSequence(10);
         //亂數陣列 END
         for (int i = 0; i < 3; i++)
         {
@@ -113,13 +121,30 @@ static class Question_Data{
             }
             else
             {
-                rand = GetRandomSequence(10);
                 while (true)
                 {
-                    if (Question_bank.Vocabulary_Ans[rand[c]] == (question_temp[Question_Check.Question_Num].GetQuestion())) { c++; continue; }
-                    ChangeButton_Ans(Question_bank.Vocabulary_Ans[rand[c]], i);
-                    c++;
-                    break;
+                    if (Level_Check.choose != 1 && Level_Check.choose != 4)  //英文
+                    {
+                        if (Question_bank.Vocabulary_Ans[rand[c]] == (question_temp[Question_Check.Question_Num].GetAnswer_r_Content()))
+                        { c++; continue; }
+                        else
+                        {
+                            ChangeButton_Ans(Question_bank.Vocabulary_Ans[rand[c]], i);
+                            c++;
+                            break;
+                        }
+                    }
+                    else //中文
+                    {
+                        if (Question_bank.Vocabulary_Ans[rand[c]] == (question_temp[Question_Check.Question_Num].GetQuestion()))
+                        { c++; continue; }
+                        else
+                        {
+                            ChangeButton_Ans(Question_bank.Vocabulary_Ans_C_Name[rand[c]], i);
+                            c++;
+                            break;
+                        }
+                    }
                 }
             }
         }
