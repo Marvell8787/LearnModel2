@@ -10,11 +10,19 @@ public class Canvas_Level_Learn : MonoBehaviour {
         Text t_temp;
         Image i_Temp;
         Level_Class[] level_temp = new Level_Class[7];
+        Question_Class[] question_temp = new Question_Class[5];
+        int r,r1;
 
+        Question_Data.Question_Init();
         Level_Data.Level_Init();
         ClearAllText();
 
-        for(int i = 0; i < 7; i++)
+        for (int i = 0; i < 5; i++)
+        {
+            question_temp[i] = Question_Data.Question_Get(i);
+        }
+
+        for (int i = 0; i < 7; i++)
         {
             level_temp[i] = Level_Data.Level_Get(i);
         }
@@ -24,6 +32,8 @@ public class Canvas_Level_Learn : MonoBehaviour {
         t_temp = GameObject.Find("Text_LevelContent").GetComponent<Text>();
         t_temp.text = level_temp[Level_Check.choose].GetTitle();
 
+        
+
         switch (Level_Check.choose)
         {
             case 0: //Level-1
@@ -31,6 +41,22 @@ public class Canvas_Level_Learn : MonoBehaviour {
                 t_temp.text = "Please click on the pattern on the left to select the correct answer based on what you hear and from the options below.";
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("Image/Voice", typeof(Sprite)) as Sprite;
+
+                r = Random.Range(0, 3);
+                for(int i = 0; i < 3;i++)
+                {
+                    if(r == i)
+                        Question_Data.ChangeButton_Ans(question_temp[Question_Chcek.Question_Num].GetAnswer_r(), i);
+                    else
+                    {
+                        r1 = Random.Range(0, 10);
+                        while (true)
+                        //{
+                            Question_Data.ChangeButton_Ans(Question_bank.Vocabulary_Ans[r1], i);
+                        //}
+                    }
+                }
+
                 break;
             case 1: //Level-2
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
@@ -61,7 +87,12 @@ public class Canvas_Level_Learn : MonoBehaviour {
             default:
                 break;
         }
-	}
+        Question_Chcek.Question_Num = 1;
+        t_temp = GameObject.Find("Text_QuestionNum").GetComponent<Text>();
+        t_temp.text = Question_Chcek.Question_Num.ToString() + ".";
+
+
+    }
     public void ClearAllText()
     {
         Text t_temp;

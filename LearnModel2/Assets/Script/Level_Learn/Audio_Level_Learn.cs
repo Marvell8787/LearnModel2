@@ -16,41 +16,47 @@ public class Audio_Level_Learn : MonoBehaviour {
     
     public void Voice()
     {
-        if (Level_Check.choose == 1 || Level_Check.choose == 4)
+        if (Level_Check.choose == 0 || Level_Check.choose == 3)
             Play();
     }
     public void Play()
     {
-        switch (0) //等題目出來記得來給
+        Question_Class[] question_temp = new Question_Class[5];
+        for (int i = 0; i < 5; i++) {
+            question_temp[i] = Question_Data.Question_Get(i);
+        }
+        question_temp[Question_Chcek.Question_Num].GetQuestion();
+
+        switch ( question_temp[Question_Chcek.Question_Num].GetQuestion() ) //等題目出來記得來給
         {
-            case 0:
+            case "implement":
                 implement.Play();
                 break;
-            case 1:
+            case "helmet":
                 helmet.Play();
                 break;
-            case 2:
+            case "assurance":
                 assurance.Play();
                 break;
-            case 3:
+            case "lord":
                 lord.Play();
                 break;
-            case 4:
+            case "contribute":
                 contribute.Play();
                 break;
-            case 5:
+            case "depth":
                 depth.Play();
                 break;
-            case 6:
+            case "luxury":
                 luxury.Play();
                 break;
-            case 7:
+            case "applause":
                 applause.Play();
                 break;
-            case 8:
+            case "marathon":
                 marathon.Play();
                 break;
-            case 9:
+            case "electronic":
                 electronic.Play();
                 break;
             default:
