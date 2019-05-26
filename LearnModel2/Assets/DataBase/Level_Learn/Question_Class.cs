@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 class Question_Class{
-    private string QuestionType = "";
-    private string QuestionNum = "";
+    private int QuestionNum = 1;
     private string Question = "";
-    private string Answer = "";
+    private string Answer_r = ""; //正解
+    private string Answer_c = ""; //使用者的答案
     private string FeedBack = "";
-    public Question_Class(string _QuestionType = "", string _QuestionNum = "", string _Question = "", string _Answer = "", string _FeedBack = "")
+    public Question_Class(int _QuestionNum = 1, string _Question = "", string _Answer_r = "", string _Answer_c = "", string _FeedBack = "")
     {
-        QuestionType = _QuestionType;
         QuestionNum = _QuestionNum;
         Question = _Question;
-        Answer = _Answer;
+        Answer_r = _Answer_r;
+        Answer_c = _Answer_c;
+
         FeedBack = _FeedBack;
     }
-    private string GetQuestionType()
-    {
-        return QuestionType;
-    }
-    private string GetQuestionNum()
+    private int GetQuestionNum()
     {
         return QuestionNum;
     }
@@ -28,9 +25,13 @@ class Question_Class{
     {
         return Question;
     }
-    private string GetAnswer()
+    private string GetAnswer_r()
     {
-        return Answer;
+        return Answer_r;
+    }
+    private string GetAnswer_c()
+    {
+        return Answer_c;
     }
     private string GetFeedBack()
     {

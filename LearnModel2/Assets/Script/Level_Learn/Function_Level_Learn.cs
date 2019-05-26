@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Threading;
 
 public class Function_Level_Learn : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void Choose_A()
+    {
+
+    }
+    public void Choose_B()
+    {
+
+    }
+    public void Choose_C()
+    {
+
+    }
+
+
 }

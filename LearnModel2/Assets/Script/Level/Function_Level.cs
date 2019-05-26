@@ -51,6 +51,14 @@ public class Function_Level : MonoBehaviour {
         Level_Check.choose = 6;
         ShowContent(Level_Check.choose);
     }
+    public void Challenge()
+    {
+        if (Level_Check.choose < 6)
+            Application.LoadLevel("Level_Learn");
+        else
+            Debug.Log("Ok");
+            //Application.LoadLevel("Overall");
+    }
     public void ShowContent(int n)
     {
         Text t_temp;

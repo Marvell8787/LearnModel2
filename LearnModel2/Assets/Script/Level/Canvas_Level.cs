@@ -25,12 +25,12 @@ public class Canvas_Level : MonoBehaviour {
         if ((Avg / 6) > 80)
         {
             b_temp.interactable = true;
-            Debug.Log("On");
+            //Debug.Log("On");
         }
         else
         {
             b_temp.interactable = false;
-            Debug.Log("Off");
+            //Debug.Log("Off");
         }
     }
     public void ClearAllText()

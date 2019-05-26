@@ -5,7 +5,7 @@ using UnityEngine;
 static class Level_Data{
 
     public static string[] Level_Title = new string[7] { "Level-1", "Level-2", "Level-3", "Level-4", "Level-5", "Level-6", "Overall" };
-    public static string[] Level_QuestionType = new string[7] { "Listening", "Fill in the blanks", "Translation", "Listening", "Fill in the blanks", "Translation", "Spelling" };
+    public static string[] Level_QuestionType = new string[7] { "Listening", "Translation", "Fill in the blanks", "Listening", "Translation", "Fill in the blanks", "Spelling" };
     public static string[] Level_Range = new string[7] { "1-5", "1-5", "1-5", "6-10", "6-10", "6-10", "6-10" };
     public static string[] Level_Reward = new string[7] { "Money", "Money", "Money", "Money", "Money", "Money", "Money" };
     public static string[] Level_Punishment = new string[7] { "Money", "Money", "Money", "Money", "Money", "Money", "Money" };
