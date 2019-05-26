@@ -49,8 +49,7 @@ public class Function_Level : MonoBehaviour {
         if (Level_Check.choose < 6)
             Application.LoadLevel("Level_Learn");
         else
-            Debug.Log("Ok");
-            //Application.LoadLevel("Overall");
+            Application.LoadLevel("Overall");
     }
     public void ShowContent(int n)
     {

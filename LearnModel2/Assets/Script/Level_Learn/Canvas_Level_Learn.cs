@@ -48,6 +48,8 @@ public class Canvas_Level_Learn : MonoBehaviour {
                 Question_Data.Button_Ans_Set();
                 break;
             case 2: //Level-3 填空
+                t_temp = GameObject.Find("Text_Question").GetComponent<Text>();
+                t_temp.text = question_temp.GetQuestion();
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("", typeof(Sprite)) as Sprite;
                 Question_Data.Button_Ans_Set();
@@ -67,6 +69,8 @@ public class Canvas_Level_Learn : MonoBehaviour {
                 Question_Data.Button_Ans_Set();
                 break;
             case 5: //Level-6 填空
+                t_temp = GameObject.Find("Text_Question").GetComponent<Text>();
+                t_temp.text = question_temp.GetQuestion();
                 i_Temp = GameObject.Find("Image_Question").GetComponent<Image>();
                 i_Temp.sprite = Resources.Load("", typeof(Sprite)) as Sprite;
                 Question_Data.Button_Ans_Set();

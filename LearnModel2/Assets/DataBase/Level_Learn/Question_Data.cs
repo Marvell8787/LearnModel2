@@ -14,7 +14,7 @@ static class Question_Check
 }
 
 static class Question_Data{
-    // Level
+    // Level_Learn
     public static string[] Question = new string[5] { "", "", "", "", "" };
     public static string[] Answer_r = new string[5] { "", "", "", "", "" };
     public static string[] Answer_r_Content = new string[5] { "", "", "", "", "" };
@@ -22,11 +22,18 @@ static class Question_Data{
     public static string[] Answer_c_Content = new string[5] { "", "", "", "", "" };
     public static string[] FeedBack = new string[5] { "", "", "", "", ""};
 
+    //Overall
+    public static string[] O_Question = new string[10] { "", "", "", "", "", "", "", "", "", "" };
+    public static string[] O_Answer_r_Content = new string[10] { "", "", "", "", "", "", "", "", "", "" };
+    public static string[] O_Answer_c_Content = new string[10] { "", "", "", "", "", "", "", "", "", "" };
+    public static string[] O_FeedBack = new string[10] { "", "", "", "", "", "", "", "", "", "" };
+
     public static string[] Button_Ans = new string[3] { "", "", ""};
 
     public static string[] Button_Ans_Check = new string[3] { "A", "B", "C" };
 
     public static Question_Class[] question_temp = new Question_Class[5];
+    public static Question_Class[] question_overall_temp = new Question_Class[10];
     public static Vocabulary_Class[] vocabulary_temp = new Vocabulary_Class[10];
 
 
@@ -42,23 +49,26 @@ static class Question_Data{
         //要弄填空的題庫
         switch (Level_Check.choose)
         {
-            case 0: //Level-1 
+            case 0: //Level-1 Listening
                 Question_Vocabulary_Set(0,5);
                 break;
-            case 1: //Level-2 Listening 英翻中
+            case 1: //Level-2 英翻中
                 Question_Vocabulary_Set(0,5);
                 break;
-            case 2: //Level-3 
+            case 2: //Level-3 填空
+                Question_Sentence_Set(0, 5);
                 break;
-            case 3: //Level-4
+            case 3: //Level-4 Listening
                 Question_Vocabulary_Set(5,10);
                 break;
-            case 4: //Level-5 Listening 英翻中
+            case 4: //Level-5 英翻中
                 Question_Vocabulary_Set(5,10);
                 break;
-            case 5: //Level-6
+            case 5: //Level-6 填空
+                Question_Sentence_Set(5, 10);
                 break;
             case 6: //Overall
+                Question_Overall_Set();
                 break;
             default:
                 break;
@@ -100,6 +110,82 @@ static class Question_Data{
         for(int i = 0; i < 5; i++)
         {
             question_temp[i] = new Question_Class(i+1, Question[i],"", Answer_r_Content[i],"","","");
+        }
+    }
+
+    public static void Question_Sentence_Set(int n1, int n2)
+    {
+        for (int i = n1; i < n2; i++)
+        {
+            int r = Random.Range(0, 3);
+            if(Level_Check.choose == 2)
+            {
+                switch (i)
+                {
+                    case 0:
+                        Question[i] = Question_bank.Level3_Question_1[r];
+                        break;
+                    case 1:
+                        Question[i] = Question_bank.Level3_Question_2[r];
+                        break;
+                    case 2:
+                        Question[i] = Question_bank.Level3_Question_3[r];
+                        break;
+                    case 3:
+                        Question[i] = Question_bank.Level3_Question_4[r];
+                        break;
+                    case 4:
+                        Question[i] = Question_bank.Level3_Question_5[r];
+                        break;
+                    default:
+                        break;
+                }
+                Answer_r_Content[i] = vocabulary_temp[i].GetE_Name();
+            }
+            else
+            {
+                switch (i-5)
+                {
+                    case 0:
+                        Question[i - 5] = Question_bank.Level6_Question_1[r];
+                        break;
+                    case 1:
+                        Question[i - 5] = Question_bank.Level6_Question_2[r];
+                        break;
+                    case 2:
+                        Question[i - 5] = Question_bank.Level6_Question_3[r];
+                        break;
+                    case 3:
+                        Question[i - 5] = Question_bank.Level6_Question_4[r];
+                        break;
+                    case 4:
+                        Question[i - 5] = Question_bank.Level6_Question_5[r];
+                        break;
+                    default:
+                        break;
+                }
+                Answer_r_Content[i-5] = vocabulary_temp[i].GetE_Name();
+
+            }
+        }
+        QaARandomSequence(5);
+        for (int i = 0; i < 5; i++)
+        {
+            question_temp[i] = new Question_Class(i + 1, Question[i], "", Answer_r_Content[i], "", "", "");
+        }
+    }
+    public static void Question_Overall_Set()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            Question[i] = vocabulary_temp[i].GetE_Name();
+            Answer_r_Content[i] = vocabulary_temp[i].GetE_Name();
+        }
+        QaARandomSequence(10);
+
+        for (int i = 0; i < 10; i++)
+        {
+            question_overall_temp[i] = new Question_Class(i + 1, Question[i], "", Answer_r_Content[i], "", "", "");
         }
     }
     public static void Button_Ans_Set()
@@ -153,6 +239,11 @@ static class Question_Data{
     public static Question_Class Question_Get(int n)
     {
         return question_temp[n];
+    }
+
+    public static Question_Class Question_Overall_Get(int n)
+    {
+        return question_overall_temp[n];
     }
 
     public static string GetButton_Ans(int c)

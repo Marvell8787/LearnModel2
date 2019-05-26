@@ -52,14 +52,9 @@ public class Function_Level_Learn : MonoBehaviour {
 
         if (Question_Check.Question_Num == 4)
         {
-
-            Debug.Log(Question_Check.Score);
-            Debug.Log(Level_Data.GetHighestScore(Level_Check.choose));
-
             if (Question_Check.Score > Level_Data.GetHighestScore(Level_Check.choose))
             {
                 Level_Data.ChangeHighestScore(Question_Check.Score.ToString(), Level_Check.choose);
-                Debug.Log(Level_Data.GetHighestScore(Level_Check.choose));
 
             }
             Application.LoadLevel("Settlement_Learn");

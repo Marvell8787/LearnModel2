@@ -8,8 +8,7 @@ public class Canvas_Level : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Button b_temp;
-        int Avg = new int();
-        Avg = 0;
+
         ClearAllText();
         b_temp = GameObject.Find("Button_Challenge").GetComponent<Button>();
         b_temp.interactable = false;
@@ -18,19 +17,9 @@ public class Canvas_Level : MonoBehaviour {
         for (int i = 0; i < 6; i++)
         {
             level_temp[i] = Level_Data.Level_Get(i);
-            Avg += int.Parse(level_temp[i].GetHighestScore());
         }
         b_temp = GameObject.Find("Button_Overall").GetComponent<Button>();
-        if ((Avg / 6) > 80)
-        {
-            b_temp.interactable = true;
-            //Debug.Log("On");
-        }
-        else
-        {
-            b_temp.interactable = false;
-            //Debug.Log("Off");
-        }
+        b_temp.interactable = true;
     }
     public void ClearAllText()
     {
